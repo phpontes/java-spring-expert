@@ -31,4 +31,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			""")
 	Page<ProductProjection> searchProducts(List<Long> categoryIds, String name, Pageable pageable);
 
+	@Query("SELECT obj FROM Product obj JOIN FETCH obj.categories WHERE obj.id IN :productIds ORDER BY obj.name")
+	List<Product> searchProductsWithCategories(List<Long> productIds);
 }
