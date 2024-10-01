@@ -6,4 +6,5 @@ import com.devsuperior.dscatalog.entities.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
+	Role findByAuthority(String authority);
 }
